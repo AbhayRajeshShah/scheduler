@@ -1,0 +1,112 @@
+body{
+    background-color: white;
+    padding: 2rem;
+    margin: 0;
+}
+
+.cols{
+    display: flex;
+    margin: 2rem;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    
+}
+.subject{
+    position: relative;
+    box-shadow: #c4c4c4 1px 1px 15px 2.5px;
+    border-radius: 1.15rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    min-width: 15%;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 16rem;
+}
+#subjects{
+    display: flex;
+
+}
+.start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 40%;
+    margin: 10% auto;
+    box-shadow: #8d8d8d 1px 1px 15px 2.5px;
+    border-radius: 1.15rem;
+    padding: 3rem;
+    background-color: #ffffff;
+}
+.start *{
+    margin: 1rem;
+}
+.intro{
+    font-size-adjust: 22;
+    line-height: 2rem;
+    letter-spacing: 1px;
+}
+.getStarted{
+    margin: 0 33%;
+    padding: 1rem 2rem;
+    background-color: rgb(46, 163, 241);
+    color: white;
+    font-weight: 700;
+    border-radius: 2rem;
+    border:none;
+    outline: none;
+}
+.getStarted:hover{
+    cursor: pointer;
+    background-color:rgb(41, 143, 211) ;
+}
+.add{
+    display: flex;
+}
+#add{
+    position: fixed;
+    bottom: 2rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+}
+.add{
+    position: absolute;
+    bottom: 1rem;
+}
+.add input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3;
+    border-color: rgb(46, 163, 241) ;
+    width: 10rem;
+    height: 2rem;
+    outline: none;
+}
+.add button{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: rgb(46, 163, 241);
+    color: white;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    
+}
+#add input{
+    background: none;
+}
+#add button{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+    margin: 1rem;
+}
+.add button{
+    cursor: pointer;
+    background-color:rgb(41, 143, 211) ; 
+}
