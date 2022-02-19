@@ -13,8 +13,8 @@ const input_btn=(fun,parentid,i)=>{
          pholder="Chapter Name"
          return `
          <div class="add" id=${parentid}>
-         <select name="" class="priority" id="select${i}" required=${true}>
-         <option disabled=${true} selected=${true}>Priority</option>
+         <select name="" class="priority" id="select${i}" default='0' required=${true}>
+         <option disabled=${true} selected=${true} value=${1}>Priority</option>
          <option value="0">Low</option>
          <option value="1">Normal</option>
          <option value="2">High</option>
@@ -34,7 +34,13 @@ const new_subject=(name,chaps,i)=>{
      sub+=`<div class="subject" id=${i}><p>${name}</p>`;
      if(chaps.length!=0){
          chaps.forEach((chap,l)=>{
-             sub+=`<p>${chap.name}</p>`
+              let icon = `<i class="fa-solid fa-arrow-up"></i>`
+             if(chap.priority==0){
+               icon=`<i class="fa-solid fa-arrow-down"></i>`
+             }else if(chap.priority==2){
+                  icon=`<i class="fa-solid fa-angles-up"></i>`
+             } 
+             sub+=`<div class="chapter"><p>${chap.name}</p><p>${icon}</p></div>`
          })
      }
      sub+=`${input_btn("add_chapter",i,i)}`+`</div>`
@@ -50,7 +56,7 @@ const all_subjects=()=>{
                    sub+= new_subject(el.name,el.chapters,i)
                })
           }else{
-               sub="<p>No subjects yet</p>"
+               sub="<p>  No subjects yet</p>"
           }
           return sub;
      }else{

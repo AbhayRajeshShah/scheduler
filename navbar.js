@@ -1,7 +1,7 @@
-const nav_btn=(name,fun)=>{
+const nav_btn=(name,fun,active)=>{
     let activeClass=""
-    if(name=="Home"){
-         activeClass="active"
+    if(active){
+        activeClass="active"
     }
     return `
               <button class='nav_btn ${activeClass}' id=${name} onclick='${fun}("${name}")'>${name}</button>
@@ -18,14 +18,29 @@ const add_navItem=(x)=>{
     })    
     btn.classList.add("active")
     if(x!=="Home"){
-        console.log(x);   
+        body.innerHTML='<div id="nav">'+'</div>'
+        nav = getElement("nav");
+        Navbar(false);
+        let btn = getElement(x);
+        btn.classList.add("active");
+        Subject(x); 
+        body.innerHTML+=`<div id='category_section'></div>`
+    }else{
+        body.innerHTML='<div id="nav">'+'</div>'
+        nav = getElement("nav");
+        Navbar(true);
+        body.innerHTML+=Home();
+         addHTML = getElement("add");
+         addHTML.innerHTML=input_btn("add_subject","add",'')
+         subjectsText = getElement("subjects");
     }
 }
 
 
-const Navbar=()=>{
+const Navbar=(x)=>{
+    console.log(subjects)
     let sub="";
-    sub+=nav_btn(`Home`,"add_navItem")
+    sub+=nav_btn(`Home`,"add_navItem",x)
     subjects.forEach((el)=>{
         sub+=nav_btn(`${el.name}`,"add_navItem")
     })

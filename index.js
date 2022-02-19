@@ -1,10 +1,10 @@
 
 body.innerHTML+='<div id="nav">'+nav_btn(`Home`,"add_navItem")+'</div>'
 body.innerHTML+=Home();
-const nav = getElement("nav");
-const starttText = getElement("startt");
-const addHTML = getElement("add");
-const subjectsText = getElement("subjects");
+let nav = getElement("nav");
+let starttText = getElement("startt");
+let addHTML = getElement("add");
+let subjectsText = getElement("subjects");
 
 
 
@@ -32,7 +32,7 @@ if(subjects==null){
 }else{
     addHTML.innerHTML=input_btn("add_subject","add",'')
     subjectsText.innerHTML=all_subjects();
-    Navbar();
+    Navbar(true);
 }
 
 
