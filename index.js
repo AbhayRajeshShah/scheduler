@@ -1,4 +1,4 @@
-localStorage.clear()
+
 body.innerHTML+='<div id="nav">'+nav_btn(`Home`,"add_navItem")+'</div>'
 body.innerHTML+=Home();
 const nav = getElement("nav");
