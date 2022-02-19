@@ -1,8 +1,23 @@
 body{
     background-color: white;
-    padding: 2rem;
+    /* padding: 2rem; */
     margin: 0;
 }
+
+::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #8f54a0;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
 
 .cols{
     display: flex;
@@ -11,21 +26,30 @@ body{
     flex-wrap: nowrap;
     
 }
+#startt{
+    display: flex;
+}
 .subject{
     position: relative;
     box-shadow: #c4c4c4 1px 1px 15px 2.5px;
     border-radius: 1.15rem;
     padding: 1rem;
     background-color: #ffffff;
-    min-width: 15%;
-    margin: 1rem;
+    width: 25%;
+    margin: 1rem ;
     display: flex;
     flex-direction: column;
-    min-height: 16rem;
+    align-items: center;
+    justify-content: space-between;
 }
+.subject p{
+    text-align: center;
+}
+
 #subjects{
     display: flex;
-
+    padding-left: 10rem;
+    align-items: flex-start;
 }
 .start{
     display: flex;
@@ -72,15 +96,15 @@ body{
     align-items: center;
 }
 .add{
-    position: absolute;
-    bottom: 1rem;
+    margin: 1rem 0 0;
 }
+
 .add input{
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 3;
-    border-color: rgb(46, 163, 241) ;
+    border-color: rgb(157, 57, 214);
     width: 10rem;
     height: 2rem;
     outline: none;
@@ -89,7 +113,7 @@ body{
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;
-    background-color: rgb(46, 163, 241);
+    background-color: rgb(157, 57, 214);
     color: white;
     font-weight: 700;
     outline: none;
@@ -99,14 +123,66 @@ body{
 }
 #add input{
     background: none;
+    border-color: rgb(46, 163, 241) ;
 }
 #add button{
     width: 3rem;
     height: 3rem;
+    background-color: rgb(46, 163, 241);
     border-radius: 1.5rem;
     margin: 1rem;
 }
-.add button{
+#add button:hover{
     cursor: pointer;
     background-color:rgb(41, 143, 211) ; 
+}
+.add button:hover{
+    cursor: pointer;
+    background-color:rgb(121, 46, 241) ; 
+}
+.priority{
+    border: none;
+    outline: none;
+    margin: 0 2rem;
+}
+#container{
+    display: flex;
+}
+#nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 100vh;
+    position: fixed;
+    margin-right: 2rem;   
+    border-radius: 1.15rem;
+    box-shadow: 2px 2px 6px #999999;
+}
+#nav button{
+    font-size: 18px;
+    outline: none;
+    border: none; 
+    margin: 2rem 0;
+    width: 100%; 
+    padding: 1rem 2rem;
+    background-color: white;
+    color: rgb(117, 117, 117);
+}
+#nav *:hover{
+    cursor: pointer;
+}
+#nav button.active{
+    background-color: rgb(46, 163, 241);
+    color: white;
+}
+#nav button.active:hover{
+    background-color:rgb(41, 143, 211) ;
+}
+#categories{
+    padding-left: 10rem;
+}
+.no_display{
+    display: none;
 }

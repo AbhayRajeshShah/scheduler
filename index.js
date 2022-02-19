@@ -1,5 +1,4 @@
 
-
 //functions for localstorage
 const getItem = (element)=>{
     return JSON.parse(localStorage.getItem(element))
@@ -14,12 +13,20 @@ const getElement=(element)=>{
 }
 
 // all text elements
-const subjectsText = getElement("subjects");
+const starttText = getElement("startt");
 const addHTML = getElement("add");
 const heading = getElement("heading")
-
+const subjectsText = getElement("subjects");
+const nav = getElement("nav");
+const categories = getElement("categories")
+let nav_btns = document.querySelectorAll(".nav_btn");
 //get items from local storage
 let subjects = getItem("subjects")
+
+
+//add navbar event listener
+
+
 
 //render items
 const renderSubject=()=>{
@@ -27,25 +34,29 @@ const renderSubject=()=>{
     //check if array isnt empty
     if(subjects.length>0){
         let sub = ""
+        let navString=nav_btn(`Home`,"add_navItem")
         //loop through elements
         subjects.forEach((el,i)=>{
-            console.log(input_btn("add_chapter",i))
-            sub+=`<div class="subject" id=${i}><p>${el.name}</p>`+`${input_btn("add_chapter",i,i)}`;
+            navString+=nav_btn(`${el.name}`,"add_navItem")
+            categories.innerHTML+=`<div id='div${el.name}' class="no_display">Hi</div>`
+            sub+=`<div class="subject" id=${i}><p>${el.name}</p>`;
             if(el.chapters.length!=0){
                 el.chapters.forEach((chap,l)=>{
-                    sub+=`<p>${chap}</p>`
+                    sub+=`<p>${chap.name}</p>`
                 })
             }
-            sub+=`</div>`
+            sub+=`${input_btn("add_chapter",i,i)}`+`</div>`
         })
+        nav.innerHTML=navString;
         subjectsText.innerHTML=sub;
+        nav_btns = document.querySelectorAll(".nav_btn")
     }else{
         subjectsText.innerHTML=`<p>No Subjects yet</p>`
     }
 }
 
 if(subjects==null){
-    subjectsText.innerHTML=`<div class="start">
+    starttText.innerHTML=`<div class="start">
                             <p class="big" style="text-align: center;font-size: 24px;">
                                 Welcome 
                             </p>
@@ -57,7 +68,7 @@ if(subjects==null){
     const start_btn = getElement("start");
 
     start_btn.addEventListener("click",()=>{
-        subjectsText.innerHTML=""
+        starttText.innerHTML=""
     setItem("subjects",[]);
     subjects=[];
     addHTML.innerHTML=input_btn("add_subject","add",'')
@@ -82,8 +93,21 @@ const add_subject=(id)=>{
 const add_chapter=(id,parent,i)=>{
   let parentid = getElement(parent).id;
   let el = getElement(String(id)+String(i));
-  subjects[parentid].chapters.push(el.value);
+  subjects[parentid].chapters.push({name:el.value,priority:0});
   setItem("subjects",subjects);
   renderSubject();
   el.value=""  
+}
+
+const add_navItem=(x)=>{
+    let btn = getElement(x);
+    nav_btns.forEach((el)=>{
+        if(el.classList.contains("active")){
+            el.classList.remove("active")
+        }
+    })    
+    btn.classList.add("active")
+    if(x!=="Home"){
+        console.log(x);   
+    }
 }
