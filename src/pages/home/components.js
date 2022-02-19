@@ -29,9 +29,34 @@ const input_btn=(fun,parentid,i)=>{
 
 }
 
-
-const nav_btn=(name,fun)=>{
-     return `
-               <button class="nav_btn" id=${name} onclick='${fun}("${name}")'>${name}</button>
-          `
+const new_subject=(name,chaps,i)=>{
+     let sub=""
+     sub+=`<div class="subject" id=${i}><p>${name}</p>`;
+     if(chaps.length!=0){
+         chaps.forEach((chap,l)=>{
+             sub+=`<p>${chap.name}</p>`
+         })
+     }
+     sub+=`${input_btn("add_chapter",i,i)}`+`</div>`
+     return sub;
 }
+
+const all_subjects=()=>{
+     if(subjects!==null){
+          subjects=getItem("subjects");
+          let sub=""
+          if(subjects.length>0){     
+               subjects.forEach((el,i)=>{
+                   sub+= new_subject(el.name,el.chapters,i)
+               })
+          }else{
+               sub="<p>No subjects yet</p>"
+          }
+          return sub;
+     }else{
+          return ""
+     }
+
+}
+
+
